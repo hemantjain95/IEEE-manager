@@ -7,7 +7,7 @@
 	var name;
 	chrome.downloads.onDeterminingFilename.addListener(			//event listener 
 	function (downloadItem, suggest) 
-	{	//window.alert(downloadItem.url);
+	{	///window.alert(downloadItem.url);
 	  	//window.alert("inside downloads");
 		if (/^https?:\/\/ieeexplore\.ieee\.org.*/.test(downloadItem.referrer))		//checking that the site is ieee 
 		{ 	
@@ -37,9 +37,9 @@
 	 			$(data).find('h1').each(function()
    				{	name="";
    					console.log($(this).text());
-   					///alert($(this).text());
+   					//alert($(this).text());
    					name=$.trim($(this).text());
-   					//name=name.replace(" ","");
+   					name=name.replace(" ","");
    					//alert(name);
 				});
 	 			var text="";
@@ -62,7 +62,7 @@
 	 				//alert(text);
 	 			}
 	 			var res3 = data.match(/<meta name="citation_date" content=.*/g);
-	 			if(res2!=null)
+	 			if(res3!=null)
 	 			{	
 	 				console.log(res3[0]);
 	 				console.log(res3.length);
@@ -79,9 +79,17 @@
 				}	
 					name+=text;
 					name=name.replace( /\s/g,"_");
+					//alert(name.length);
+					if(name.length>150)
+					{	//alert("X");
+						name=name.substring(0,150);
+						//alert(name);
+	 				}
 	 				//alert(text);
+	 				//alert("hi");
 	 				//alert(name);
-	 			suggest({filename: folder + "/" + name});								//change file name
+	 				suggest({filename: folder + "/" + name});								//change file name
+	 				//alert("hi");
 	 				/*
 	 				$(data).find('meta').each(function()
    					{
@@ -92,12 +100,15 @@
 						
 	 				});*/
 	 		});	
-			return true;														//foe asynchronous execution
+			return true;
+			/*														//foe asynchronous execution
 			if(isPDF(downloadItem))
-	    	{	//alert("lame");
+	    	{	alert("lame");
 	    	 	suggest({filename: folder + "/" + name});
 	    	}
 	    	else suggest();
+
+	    	*/
  		}
 	    	
 	});

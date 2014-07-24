@@ -1,0 +1,8 @@
+{"name": "IEEE-manager",
+ "description": "IEEE-manager",
+ "version": "0.1",
+ "background": {"scripts": ["jquery-1.11.1.js","new.js"], "persistent": false},
+ "options_page": "options.html",
+ "permissions": ["downloads","tabs","activeTab","history","http://*/", 
+        "https://*/","http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6645369"],
+ "manifest_version": 2}
